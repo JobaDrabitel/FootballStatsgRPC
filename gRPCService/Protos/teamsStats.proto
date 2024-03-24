@@ -1,0 +1,32 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "gRPCService";
+
+package greet;
+
+service TeamStats {
+  rpc GetTeamStats (TeamRequest) returns (TeamResponse);
+  rpc GetTeamsStatsStream (TeamRequest) returns (stream TeamResponse);
+}
+
+
+message TeamRequest {
+  oneof query {
+    string name = 1;
+    int32 number = 2;
+  }
+}
+
+message TeamResponse {
+  string name = 1;
+  int32 matches = 2;
+  int32 wins = 3;
+  int32 draws = 4;
+  int32 losses = 5;
+  int32 goalsFor = 6;
+  int32 goalsAgainst = 7;
+  int32 points = 8;
+  double xG = 9;
+  double xGA = 10;
+  double xPTS = 11;
+}
